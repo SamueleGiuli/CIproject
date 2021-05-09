@@ -1,5 +1,10 @@
 #Building scifor
+
+#Errors
 set -e
+
+#Sourcing .bashrc
+source /home/${USER}/.bashrc
 
 cd LIB_DMFT_ED
 mkdir build

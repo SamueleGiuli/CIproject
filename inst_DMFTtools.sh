@@ -4,7 +4,7 @@
 set -e
 
 #Sourcing .bashrc
-source /home/${USER}/.bashrc
+. "$HOME/.bashrc"
 
 cd DMFTtools
 mkdir build

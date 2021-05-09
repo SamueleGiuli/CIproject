@@ -3,8 +3,9 @@
 #Errors
 set -e
 
+
 #Sourcing .bashrc
-source /home/${USER}/.bashrc
+. "$HOME/.bashrc"
 
 cd scifor
 mkdir build
