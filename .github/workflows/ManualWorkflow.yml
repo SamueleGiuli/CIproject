@@ -79,7 +79,7 @@ jobs:
 #Reinstall gfortran
       - name: Required compiler
         run: brew install gcc@9
-        
+
       - name: gfortran-info
         run: gfortran --version
 
