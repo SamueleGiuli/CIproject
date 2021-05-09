@@ -92,7 +92,7 @@ jobs:
 #Install OpenMPI
       - name: install-openmpi
         run: brew install openmpi
-	
+
 #Set up SciFortran
       - name: Cloning SciFortran
         shell: bash -l {0}
