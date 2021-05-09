@@ -4,7 +4,9 @@
 set -e
 
 #Sourcing .bashrc
-. "$HOME/.bashrc"
+SCIFORVER=$( ls /home/${USER}/opt/scifor/gnu)
+echo "/home/${USER}/opt/scifor/gnu/${SCIFORVER}/bin/scifor_config_user.sh"
+source /home/${USER}/opt/scifor/gnu/${SCIFORVER}/bin/scifor_config_user.sh
 
 cd DMFTtools
 mkdir build
