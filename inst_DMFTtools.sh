@@ -1,5 +1,10 @@
 #Building scifor
+
+#Errors
 set -e
+
+#Sourcing .bashrc
+source /home/${USER}/.bashrc
 
 cd DMFTtools
 mkdir build
