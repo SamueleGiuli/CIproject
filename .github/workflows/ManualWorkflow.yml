@@ -10,23 +10,33 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+#Downloading OpenMPI
+      - name: download-openmpi
+        run: wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.2.tar.gz
+      - name: extract-openmpi
+        run: tar -xvf ./openmpi-4.0.2.tar.gz
+      - name: configure-openmpi
+        run: ./openmpi-4.0.2/configure --prefix="/home/${USER}/.openmpi"
+      - name: install-openmpi
+        run: |
+          make -j
+          sudo make install
 
+
+#Set up SciFortran
       - name: Cloning SciFortran
         run: git clone https://github.com/QcmPlab/SciFortran.git scifor
-
       - name: Install SciFortran
         run: ./inst_scifor.sh
 
-
+#Set up DMFTtools
       - name: Cloning DMFTtools
         run: git clone https://github.com/QcmPlab/DMFTtools.git DMFTtools
-
       - name: Install DMFTtools
         run: ./inst_DMFTtools.sh
 
-
+#Set up LIB_DMFT_ED
       - name: Cloning LIB_DMFT_ED
         run: git clone https://github.com/QcmPlab/LIB_DMFT_ED.git LIB_DMFT_ED
-
       - name: Install LIB_DMFT_ED
         run: ./inst_LIB_DMFT_ED.sh
