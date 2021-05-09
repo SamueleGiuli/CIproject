@@ -91,7 +91,7 @@ jobs:
 
 #Install OpenMPI
       - name: install-openmpi
-        run: alias gfortran gfortra-9
+        run: brew install gcc@9
 
 #Set up SciFortran
       - name: Cloning SciFortran
