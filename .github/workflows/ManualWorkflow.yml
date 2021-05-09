@@ -9,6 +9,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - name: gfortran-info
+        run: gfortran --version
 
 #Install BLAS and LAPACK
       - name: blas-n-lapack-install
@@ -77,6 +79,9 @@ jobs:
 #Reinstall gfortran
       - name: Required compiler
         run: brew reinstall gfortran
+        
+      - name: gfortran-info
+        run: gfortran --version
 
 #Install BLAS and LAPACK
       - name: blas-n-lapack-install
