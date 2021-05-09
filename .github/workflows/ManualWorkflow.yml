@@ -14,6 +14,10 @@ jobs:
       - name: blas-n-lapack-install
         run: sudo apt-get install libblas-dev liblapack-dev
 
+#Install environment-module
+      - name: env-module-install
+        run: sudo apt-get install -y environment-modules
+
 #Install OpenMPI
 #      - name: download-openmpi
 #        run: wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.2.tar.gz
