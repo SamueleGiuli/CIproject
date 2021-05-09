@@ -3,7 +3,11 @@
 #Errors
 set -e
 
+echo $PATH
+
 source ~/.bashrc
+
+echo $PATH
 
 cd scifor
 mkdir build
