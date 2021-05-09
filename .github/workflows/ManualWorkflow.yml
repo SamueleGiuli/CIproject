@@ -76,7 +76,7 @@ jobs:
 
 #Reinstall gfortran
       - name: Required compiler
-        run: brew reinstall gfortran@9
+        run: alias gfortran='gfortran-9'
 
 #Install BLAS and LAPACK
       - name: blas-n-lapack-install
@@ -86,7 +86,7 @@ jobs:
 
 #Install OpenMPI
       - name: install-openmpi
-        run: brew install openmpi
+        run: alias gfortran gfortra-9
 
 #Set up SciFortran
       - name: Cloning SciFortran
