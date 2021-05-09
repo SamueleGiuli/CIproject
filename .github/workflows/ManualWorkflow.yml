@@ -76,7 +76,7 @@ jobs:
 
 #Reinstall gfortran
       - name: Required compiler
-        run: brew reinstall gfortran
+        run: brew reinstall gfortran@9
 
 #Install BLAS and LAPACK
       - name: blas-n-lapack-install
