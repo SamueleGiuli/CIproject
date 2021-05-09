@@ -89,7 +89,7 @@ jobs:
         run: |
           alias gfortran='gfortran-9'
           brew install lapack openblas
-	  gfortran --version
+          gfortran --version
 
 
 #Install OpenMPI
@@ -103,8 +103,8 @@ jobs:
       - name: Install SciFortran
         shell: bash -l {0}
         run: |
-	  alias gfortran='gfortran-9'
-	  ./inst_scifor.sh
+          alias gfortran='gfortran-9'
+          ./inst_scifor.sh
 
 #Set up DMFTtools
       - name: Cloning DMFTtools
