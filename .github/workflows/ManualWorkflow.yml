@@ -32,15 +32,21 @@ jobs:
         run: git clone https://github.com/QcmPlab/SciFortran.git scifor
       - name: Install SciFortran
         run: ./inst_scifor.sh
+      - name: Source SciFortran
+        run: source scifor/bin/scifor_config_user.sh
 
 #Set up DMFTtools
       - name: Cloning DMFTtools
         run: git clone https://github.com/QcmPlab/DMFTtools.git DMFTtools
       - name: Install DMFTtools
         run: ./inst_DMFTtools.sh
+      - name: Source SciFortran
+        run: source DMFTtools/bin/dmft_tools_config_user.sh
 
 #Set up LIB_DMFT_ED
       - name: Cloning LIB_DMFT_ED
         run: git clone https://github.com/QcmPlab/LIB_DMFT_ED.git LIB_DMFT_ED
       - name: Install LIB_DMFT_ED
         run: ./inst_LIB_DMFT_ED.sh
+      - name: Source SciFortran
+        run: source LIB_DMFT_ED/build/etc/dmft_ed_config.sh
