@@ -15,11 +15,6 @@ jobs:
         shell: bash -l {0}
         run: sudo apt-get install libblas-dev liblapack-dev
 
-#Install pkg-config
-      - name: pkg-config-install
-        shell: bash -l {0}
-        run: sudo apt-get install -y pkg-config
-
 #Install OpenMPI
       - name: download-openmpi
         run: wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.2.tar.gz
@@ -63,3 +58,58 @@ jobs:
       - name: Install LIB_DMFT_ED
         shell: bash -l {0}
         run: ./inst_LIB_DMFT_ED.sh
+
+#
+# NEED TO INSERD THE UNIT TEST HERE
+#
+
+
+
+jobs:
+
+  test-macos-10_15:
+    runs-on: macos-10.15
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+#Reinstall gfortran
+      - name: Required compiler
+        run: brew reinstall gfortran
+
+#Install BLAS and LAPACK
+      - name: blas-n-lapack-install
+        shell: bash -l {0}
+        run:  brew install lapack openblas
+
+
+#Install OpenMPI
+      - name: install-openmpi
+        run: brew install openmpi
+
+#Set up SciFortran
+      - name: Cloning SciFortran
+        shell: bash -l {0}
+        run: git clone https://github.com/QcmPlab/SciFortran.git scifor
+      - name: Install SciFortran
+        shell: bash -l {0}
+        run: ./inst_scifor.sh
+
+#Set up DMFTtools
+      - name: Cloning DMFTtools
+        shell: bash -l {0}
+        run: git clone https://github.com/QcmPlab/DMFTtools.git DMFTtools
+      - name: Install DMFTtools
+        shell: bash -l {0}
+        run: ./inst_DMFTtools.sh
+
+#Set up LIB_DMFT_ED
+      - name: Cloning LIB_DMFT_ED
+        shell: bash -l {0}
+        run: git clone https://github.com/QcmPlab/LIB_DMFT_ED.git LIB_DMFT_ED
+      - name: Install LIB_DMFT_ED
+        shell: bash -l {0}
+        run: ./inst_LIB_DMFT_ED.sh
+
+
