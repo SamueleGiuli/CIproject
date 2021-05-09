@@ -78,7 +78,7 @@ jobs:
 
 #Reinstall gfortran
       - name: Required compiler
-        run: brew install gcc@9
+        run:  brew reinstall gfortran
 
       - name: gfortran-info
         run: gfortran --version
@@ -91,7 +91,10 @@ jobs:
 
 #Install OpenMPI
       - name: install-openmpi
-        run: brew install openmpi
+        run: |
+	  alias gfortran='gfortran-9'
+	  brew install openmpi
+	  
 
 #Set up SciFortran
       - name: Cloning SciFortran
