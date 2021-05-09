@@ -65,8 +65,6 @@ jobs:
 
 
 
-jobs:
-
   test-macos-10_15:
     runs-on: macos-10.15
 
