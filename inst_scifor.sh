@@ -11,5 +11,6 @@ make install
 cd ../..
 SCIFORVER=$( ls /home/${USER}/opt/scifor/gnu)
 echo "/home/${USER}/opt/scifor/gnu/${SCIFORVER}/bin/scifor_config_user.sh"
-source /home/${USER}/opt/scifor/gnu/${SCIFORVER}/bin/scifor_config_user.sh
-echo -e "\e[32m scifor succesfully installed \e[0m"
+echo "source /home/${USER}/opt/scifor/gnu/${SCIFORVER}/bin/scifor_config_user.sh" >> /home/${USER}/.bashrc
+
+echo -e "\e[32m scifor succesfully installed and sourced \e[0m"
