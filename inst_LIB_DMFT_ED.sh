@@ -3,8 +3,8 @@
 #Errors
 set -e
 
-#Sourcing .bashrc
-source /home/${USER}/.bashrc
+source ~/.bashrc
+
 
 cd LIB_DMFT_ED
 mkdir build

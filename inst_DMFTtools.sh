@@ -3,6 +3,8 @@
 #Errors
 set -e
 
+source ~/.bashrc
+
 #Sourcing .bashrc
 SCIFORVER=$( ls /home/${USER}/opt/scifor/gnu)
 echo "/home/${USER}/opt/scifor/gnu/${SCIFORVER}/bin/scifor_config_user.sh"

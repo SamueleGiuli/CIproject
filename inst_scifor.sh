@@ -3,6 +3,8 @@
 #Errors
 set -e
 
+source ~/.bashrc
+
 cd scifor
 mkdir build
 cd build
