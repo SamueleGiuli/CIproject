@@ -3,11 +3,10 @@
 #Errors
 set -e
 
-echo $PATH
-
 source ~/.bashrc
+export PATH=${PATH}:/home/${USER}/.openmpi/bin/
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/${USER}/.openmpi/lib/
 
-echo $PATH
 
 cd scifor
 mkdir build

@@ -4,6 +4,14 @@
 set -e
 
 source ~/.bashrc
+export PATH=${PATH}:/home/${USER}/.openmpi/bin/
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/${USER}/.openmpi/lib/
+
+
+#Sourcing .bashrc
+SCIFORVER=$( ls /home/${USER}/opt/scifor/gnu)
+echo "/home/${USER}/opt/scifor/gnu/${SCIFORVER}/bin/scifor_config_user.sh"
+source /home/${USER}/opt/scifor/gnu/${SCIFORVER}/bin/scifor_config_user.sh
 
 
 cd LIB_DMFT_ED
