@@ -1,0 +1,48 @@
+name: Manually triggered CI workflow to execute unit tests
+
+on: workflow_dispatch
+
+jobs:
+  test-ubuntu-20_04:
+    runs-on: ubuntu-20.04
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+
+      - name: Cloning SciFortran
+        run: git clone git@github.com:QcmPlab/SciFortran.git scifor
+
+      - name: Install SciFortran
+        run: make inst_scifor
+
+
+      - name: Cloning DMFTtools
+        run: git clone git@github.com:QcmPlab/DMFTtools.git DMFTtools
+      - name: Install DMFTtools
+        run: make inst_DMFTtools
+
+
+      - name: Cloning LIB_DMFT_ED
+        run: git clone git@github.com:QcmPlab/LIB_DMFT_ED.git
+
+      - name: Install LIB_DMFT_ED
+        run: make inst_LIB_DMFT_ED
+
+
+      - name: Building executables
+        run: make build
+
+      - name: Running TestFunc.x
+        run: make testing
+        
+  test-macos-10_15:
+    runs-on: macos-10.15
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      - name: Required compiler
+        run: brew reinstall gfortran

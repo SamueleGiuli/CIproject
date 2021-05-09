@@ -1,0 +1,37 @@
+
+name: Scheduled CI workflow
+
+on:
+  schedule:
+#             min - hour - day of month - month - day of week
+    - cron:  '0 9,17  * 5 1,4' #Mon and Thu of May at 9:00 and 17:00
+
+jobs:
+  test-ubuntu-20_04:
+    runs-on: ubuntu-20.04
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Building executables
+        run: make build
+
+      - name: Running TestFunc.x
+        run: make testing
+        
+  test-macos-10_15:
+    runs-on: macos-10.15
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      - name: Required compiler
+        run: brew reinstall gfortran
+
+      - name: Building executables
+        run: make build
+
+      - name: Running TestFunc.x
+        run: make testing
