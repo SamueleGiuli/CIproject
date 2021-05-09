@@ -5,7 +5,7 @@ cd scifor
 mkdir build
 cd build
 ls -r
-cmake ..
+cmake .. -DUSE_MPI=no
 make
 make install
 cd ../..

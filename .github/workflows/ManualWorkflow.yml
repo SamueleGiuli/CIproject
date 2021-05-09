@@ -10,7 +10,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-#Downloading OpenMPI
+#Install BLAS and LAPACK
+      - name: blas-n-lapack-install
+        run: sudo apt-get install libblas-dev liblapack-dev
+
+#Install OpenMPI
       - name: download-openmpi
         run: wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.2.tar.gz
       - name: extract-openmpi
