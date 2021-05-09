@@ -9,6 +9,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - name: gfortran-info
+        run: gfortran --version
 
 #Install BLAS and LAPACK
       - name: blas-n-lapack-install
@@ -16,8 +18,8 @@ jobs:
         run: sudo apt-get install libblas-dev liblapack-dev
 
 #Install OpenMPI
-       - name: install-openmpi
-         run: sudo apt-get install -y openmpi-bin
+      - name: install-openmpi
+        run: sudo apt-get install -y openmpi-bin
 #      - name: download-openmpi
 #        run: wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.2.tar.gz
 #      - name: extract-openmpi
@@ -76,7 +78,10 @@ jobs:
 
 #Reinstall gfortran
       - name: Required compiler
-        run: alias gfortran='gfortran-9'
+        run: brew reinstall gfortran@9
+        
+      - name: gfortran-info
+        run: gfortran --version
 
 #Install BLAS and LAPACK
       - name: blas-n-lapack-install
