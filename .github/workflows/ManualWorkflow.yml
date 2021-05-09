@@ -12,10 +12,12 @@ jobs:
 
 #Install BLAS and LAPACK
       - name: blas-n-lapack-install
+        shell: bash -l {0}
         run: sudo apt-get install libblas-dev liblapack-dev
 
 #Install pkg-config
       - name: pkg-config-install
+        shell: bash -l {0}
         run: sudo apt-get install -y pkg-config
 
 #Install OpenMPI
@@ -33,18 +35,24 @@ jobs:
 
 #Set up SciFortran
       - name: Cloning SciFortran
+        shell: bash -l {0}
         run: git clone https://github.com/QcmPlab/SciFortran.git scifor
       - name: Install SciFortran
+        shell: bash -l {0}
         run: ./inst_scifor.sh
 
 #Set up DMFTtools
       - name: Cloning DMFTtools
+        shell: bash -l {0}
         run: git clone https://github.com/QcmPlab/DMFTtools.git DMFTtools
       - name: Install DMFTtools
+        shell: bash -l {0}
         run: ./inst_DMFTtools.sh
 
 #Set up LIB_DMFT_ED
       - name: Cloning LIB_DMFT_ED
+        shell: bash -l {0}
         run: git clone https://github.com/QcmPlab/LIB_DMFT_ED.git LIB_DMFT_ED
       - name: Install LIB_DMFT_ED
+        shell: bash -l {0}
         run: ./inst_LIB_DMFT_ED.sh
