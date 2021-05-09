@@ -13,6 +13,9 @@ SCIFORVER=$( ls /home/${USER}/opt/scifor/gnu)
 echo "/home/${USER}/opt/scifor/gnu/${SCIFORVER}/bin/scifor_config_user.sh"
 source /home/${USER}/opt/scifor/gnu/${SCIFORVER}/bin/scifor_config_user.sh
 
+DMFTVER=$( ls /home/${USER}/opt/dmft_tools/gnu )
+echo "/home/${USER}/opt/dmft_tools/gnu/${DMFTVER}/bin/dmft_tools_config_user.sh"
+source /home/${USER}/opt/dmft_tools/gnu/${DMFTVER}/bin/dmft_tools_config_user.sh
 
 cd LIB_DMFT_ED
 mkdir build
