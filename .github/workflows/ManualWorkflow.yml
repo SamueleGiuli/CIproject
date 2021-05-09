@@ -15,18 +15,18 @@ jobs:
         run: git clone https://github.com/QcmPlab/SciFortran.git scifor
 
       - name: Install SciFortran
-        run: make inst_scifor
+        run: ./inst_scifor.sh
 
 
       - name: Cloning DMFTtools
         run: git clone https://github.com/QcmPlab/DMFTtools.git DMFTtools
 
       - name: Install DMFTtools
-        run: make inst_DMFTtools
+        run: ./inst_DMFTtools.sh
 
 
       - name: Cloning LIB_DMFT_ED
         run: git clone https://github.com/QcmPlab/LIB_DMFT_ED.git LIB_DMFT_ED
 
       - name: Install LIB_DMFT_ED
-        run: make inst_LIB_DMFT_ED
+        run: ./inst_LIB_DMFT_ED.sh
