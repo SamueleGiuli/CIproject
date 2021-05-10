@@ -8,9 +8,19 @@ GLOB_INC:=$(shell pkg-config --cflags dmft_ed dmft_tools scifor)
 GLOB_LIB:=$(shell pkg-config --libs   dmft_ed dmft_tools scifor)
 
 all: $(TSTBIN)
-	ls -r
-	ls -r ..
+	ls -ra
+	ls -ra ..
+
+	SCIFORVER=$( ls /home/${USER}/opt/scifor/gnu)
+	echo "/home/${USER}/opt/scifor/gnu/${SCIFORVER}/bin/scifor_config_user.sh"
+	source /home/${USER}/opt/scifor/gnu/${SCIFORVER}/bin/scifor_config_user.sh
+
+	DMFTVER=$( ls /home/${USER}/opt/dmft_tools/gnu )
+	echo "/home/${USER}/opt/dmft_tools/gnu/${DMFTVER}/bin/dmft_tools_config_user.sh"
+	source /home/${USER}/opt/dmft_tools/gnu/${DMFTVER}/bin/dmft_tools_config_user.sh
+
 	export PKG_CONFIG_PATH=/home/runner/.pkgconfig.d
+
 	$(FC) $(FFLAGS) $(TSTDIR)/asserting.f90 $(TSTDIR)/test_sf_eigh.f90 -o $(TSTBIN)/test_eigh.x $(GLOB_INC) $(GLOB_LIB)
 	$(FC) $(FFLAGS) $(TSTDIR)/asserting.f90 $(TSTDIR)/test_sf_trapz.f90 -o $(TSTBIN)/test_trapz.x $(GLOB_INC) $(GLOB_LIB)
 	$(FC) $(FFLAGS) $(TSTDIR)/asserting.f90 $(TSTDIR)/test_sf_parsing.f90 -o $(TSTBIN)/test_parsing.x $(GLOB_INC) $(GLOB_LIB)
