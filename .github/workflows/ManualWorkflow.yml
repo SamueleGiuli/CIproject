@@ -63,9 +63,14 @@ jobs:
         shell: bash -l {0}
         run: ./inst_LIB_DMFT_ED.sh
 
-#
-# NEED TO INSERD THE UNIT TEST HERE
-#
+#Testing
+      - name: Building tests
+        shell: bash -l {0}
+        run: make all
+      - name: Testing...
+        shell: bash -l {0}
+        run: make test
+
 
 
 
