@@ -30,13 +30,13 @@ jobs:
 #        run: |
 #          make -j
 #          sudo make install
-#      - name: set-openmpi-path
-#        shell: bash -l {0}
-#        run: |
-#          export PATH=${PATH}:/home/${USER}/.openmpi/bin/
-#          export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/${USER}/.openmpi/lib/
-#          echo ${PATH}
-#          echo ${LD_LIBRARY_PATH}
+      - name: set-openmpi-path
+        shell: bash -l {0}
+        run: |
+          export PATH=${PATH}:/home/${USER}/.openmpi/bin/
+          export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/${USER}/.openmpi/lib/
+          echo ${PATH}
+          echo ${LD_LIBRARY_PATH}
 
 
 #Set up SciFortran
@@ -92,8 +92,9 @@ jobs:
       - name: blas-n-lapack-install
         shell: bash -l {0}
         run: |
-	  alias gfortran='gfortran-9'
-	  brew install lapack openblas
+          alias gfortran='gfortran-9'
+          brew install lapack openblas
+          gfortran --version
 
 
 #Install OpenMPI
@@ -107,8 +108,8 @@ jobs:
       - name: Install SciFortran
         shell: bash -l {0}
         run: |
-	  alias gfortran='gfortran-9'
-	  ./inst_scifor.sh
+          alias gfortran='gfortran-9'
+          ./inst_scifor.sh
 
 #Set up DMFTtools
       - name: Cloning DMFTtools
