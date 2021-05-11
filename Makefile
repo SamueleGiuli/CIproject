@@ -5,6 +5,9 @@ TSTDIR:=unittest
 TSTBIN:=unittest/bin
 
 all: $(TSTBIN)
+
+	PKG_CONFIG_PATH=~/.pkgconfig.d
+
 	echo "step0 PKPATH= ${PKG_CONFIG_PATH}"
 	. ~/.bashrc
 
@@ -28,7 +31,7 @@ all: $(TSTBIN)
 
 	echo "step4 PKPATH= ${PKG_CONFIG_PATH}"
 
-	export PKG_CONFIG_PATH=~/.pkgconfig.d:$(PKG_CONFIG_PATH)
+#export PKG_CONFIG_PATH=~/.pkgconfig.d:$(PKG_CONFIG_PATH)
 
 	echo "step5 PKPATH= ${PKG_CONFIG_PATH}"
 
@@ -52,3 +55,6 @@ test:
 clean:
 	rm -rf $(TSTBIN)
 	rm -rf $(TSTDIR)/*.mod
+
+testo:
+	echo "PKG: ${PKG_CONFIG_PATH}"
