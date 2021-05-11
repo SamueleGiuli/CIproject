@@ -4,9 +4,9 @@ FFLAGS:= -O2
 TSTDIR:=unittest
 TSTBIN:=unittest/bin
 
-source ~/.bashrc
-
 all: $(TSTBIN)
+
+	source ~/.bashrc
 
 	SCIFORVER=$( ls /home/${USER}/opt/scifor/gnu)
 	export PKG_CONFIG_PATH=/home/${USER}/opt/scifor/gnu/$(SCIFORVER)/etc/:$PKG_CONFIG_PATH
