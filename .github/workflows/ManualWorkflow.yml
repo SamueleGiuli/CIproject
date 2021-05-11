@@ -68,6 +68,9 @@ jobs:
         shell: bash -l {0}
         run:  |
           export PKG_CONFIG_PATH=~/.pkgconfig.d
+          export SCIFORVER=$( ls ~/opt/scifor/gnu )
+          export DMFTVER=$(   ls ~/opt/dmft_tools/gnu )
+          export LIBEDVER=$(  ls ~/opt/dmft_ed )
           make all
         
       - name: Testing...
