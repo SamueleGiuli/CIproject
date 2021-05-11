@@ -8,25 +8,25 @@ all: $(TSTBIN)
 
 
 	echo "step0 PKPATH= ${PKG_CONFIG_PATH}"
-	source ~/.bashrc
+#	source ~/.bashrc
 
 	echo "step1 PKPATH= ${PKG_CONFIG_PATH}"
 
 #	SCIFORVER=$( ls ~/opt/scifor/gnu)
-	export PKG_CONFIG_PATH=~/opt/scifor/gnu/$(SCIFORVER)/etc/:$(PKG_CONFIG_PATH)
-	source ~/opt/scifor/gnu/$(SCIFORVER)/bin/scifor_config_user.sh
+#	export PKG_CONFIG_PATH=~/opt/scifor/gnu/$(SCIFORVER)/etc/:$(PKG_CONFIG_PATH)
+#	source ~/opt/scifor/gnu/$(SCIFORVER)/bin/scifor_config_user.sh
 
 	echo "step2 PKPATH= ${PKG_CONFIG_PATH}"
 
 #	DMFTVER=$( ls ~/opt/dmft_tools/gnu )
-	export PKG_CONFIG_PATH=~/opt/dmft_tools/gnu/$(DMFTVER)/etc/:$(PKG_CONFIG_PATH)
-	source ~/opt/dmft_tools/gnu/$(DMFTVER)/bin/dmft_tools_config_user.sh
+#	export PKG_CONFIG_PATH=~/opt/dmft_tools/gnu/$(DMFTVER)/etc/:$(PKG_CONFIG_PATH)
+#	source ~/opt/dmft_tools/gnu/$(DMFTVER)/bin/dmft_tools_config_user.sh
 
 	echo "step3 PKPATH= ${PKG_CONFIG_PATH}"
 
 #	LIBEDVER=$( ls ~/opt/dmft_ed )
-	export PKG_CONFIG_PATH=~/opt/dmft_ed/gnu/$(LIBEDVER)/etc/:$(PKG_CONFIG_PATH)
-	source ~/opt/dmft_ed/gnu/$(LIBEDVER)/etc/dmft_ed_config.sh
+#	export PKG_CONFIG_PATH=~/opt/dmft_ed/gnu/$(LIBEDVER)/etc/:$(PKG_CONFIG_PATH)
+#	source ~/opt/dmft_ed/gnu/$(LIBEDVER)/etc/dmft_ed_config.sh
 
 	echo "step4 PKPATH= ${PKG_CONFIG_PATH}"
 
