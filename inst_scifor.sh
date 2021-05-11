@@ -4,9 +4,10 @@
 set -e
 
 source ~/.bashrc
-alias gfortran="gfortran-9"
 #export PATH=${PATH}:/home/${USER}/.openmpi/bin/
 #export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/${USER}/.openmpi/lib/
+
+./GetGFversion.sh "scifor"
 
 
 cd scifor

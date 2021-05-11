@@ -8,6 +8,9 @@ source ~/.bashrc
 #export PATH=${PATH}:/home/${USER}/.openmpi/bin/
 #export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/${USER}/.openmpi/lib/
 
+./GetGFversion.sh "DMFTtools"
+
+
 #Sourcing .bashrc
 SCIFORVER=$( ls /home/${USER}/opt/scifor/gnu)
 echo "/home/${USER}/opt/scifor/gnu/${SCIFORVER}/bin/scifor_config_user.sh"
