@@ -34,8 +34,6 @@ all: $(TSTBIN)
 
 	echo "step5 PKPATH= ${PKG_CONFIG_PATH}"
 
-	GLOB_INC=$(shell pkg-config --cflags dmft_ed dmft_tools scifor)
-	GLOB_LIB=$(shell pkg-config --libs   dmft_ed dmft_tools scifor)
 
 	echo "step6 PKPATH= ${PKG_CONFIG_PATH}"
 

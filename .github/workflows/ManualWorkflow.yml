@@ -20,23 +20,13 @@ jobs:
 #Install OpenMPI
       - name: install-openmpi
         run: sudo apt-get install -y openmpi-bin
-#      - name: download-openmpi
-#        run: wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.2.tar.gz
-#      - name: extract-openmpi
-#        run: tar -xvf ./openmpi-4.0.2.tar.gz
-#      - name: configure-openmpi
-#        run: ./openmpi-4.0.2/configure --prefix="/home/${USER}/.openmpi"
-#      - name: install-openmpi
+#      - name: set-openmpi-path
+#        shell: bash -l {0}
 #        run: |
-#          make -j
-#          sudo make install
-      - name: set-openmpi-path
-        shell: bash -l {0}
-        run: |
-          export PATH=${PATH}:/home/${USER}/.openmpi/bin/
-          export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/${USER}/.openmpi/lib/
-          echo ${PATH}
-          echo ${LD_LIBRARY_PATH}
+#          export PATH=${PATH}:/home/${USER}/.openmpi/bin/
+#          export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/${USER}/.openmpi/lib/
+#          echo ${PATH}
+#          echo ${LD_LIBRARY_PATH}
 
 
 #Set up SciFortran
@@ -71,6 +61,8 @@ jobs:
           export SCIFORVER=$( ls ~/opt/scifor/gnu )
           export DMFTVER=$(   ls ~/opt/dmft_tools/gnu )
           export LIBEDVER=$(  ls ~/opt/dmft_ed )
+          GLOB_INC=$(shell pkg-config --cflags dmft_ed dmft_tools scifor)
+          GLOB_LIB=$(shell pkg-config --libs   dmft_ed dmft_tools scifor)
           make all
         
       - name: Testing...
@@ -138,6 +130,11 @@ jobs:
         shell: bash -l {0}
         run:   |
           export PKG_CONFIG_PATH=~/.pkgconfig.d
+          export SCIFORVER=$( ls ~/opt/scifor/gnu )
+          export DMFTVER=$(   ls ~/opt/dmft_tools/gnu )
+          export LIBEDVER=$(  ls ~/opt/dmft_ed )
+          GLOB_INC=$(shell pkg-config --cflags dmft_ed dmft_tools scifor)
+          GLOB_LIB=$(shell pkg-config --libs   dmft_ed dmft_tools scifor)
           make all
         
       - name: Testing...
