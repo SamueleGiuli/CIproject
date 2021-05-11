@@ -6,7 +6,6 @@ TSTBIN:=unittest/bin
 
 all: $(TSTBIN)
 
-	PKG_CONFIG_PATH=~/.pkgconfig.d
 
 	echo "step0 PKPATH= ${PKG_CONFIG_PATH}"
 	. ~/.bashrc

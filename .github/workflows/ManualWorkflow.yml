@@ -66,7 +66,9 @@ jobs:
 #Testing
       - name: Building tests
         shell: bash -l {0}
-        run: make all
+        run:  |
+          export PKG_CONFIG_PATH=~.pkgconfig.d
+          make all
         
       - name: Testing...
         shell: bash -l {0}
