@@ -62,6 +62,9 @@ jobs:
           export SCIFORVER=$( ls ~/opt/scifor/gnu )
           export DMFTVER=$(   ls ~/opt/dmft_tools/gnu )
           export LIBEDVER=$(  ls ~/opt/dmft_ed )
+          source ~/opt/scifor/gnu/$(SCIFORVER)/bin/scifor_config_user.sh
+          source ~/opt/dmft_tools/gnu/$(DMFTVER)/bin/dmft_tools_config_user.sh
+          source ~/opt/dmft_ed/gnu/$(LIBEDVER)/etc/dmft_ed_config.sh
           GLOB_INC=$(shell pkg-config --cflags dmft_ed dmft_tools scifor)
           GLOB_LIB=$(shell pkg-config --libs   dmft_ed dmft_tools scifor)
           make all
@@ -135,6 +138,9 @@ jobs:
           export SCIFORVER=$( ls ~/opt/scifor/gnu )
           export DMFTVER=$(   ls ~/opt/dmft_tools/gnu )
           export LIBEDVER=$(  ls ~/opt/dmft_ed )
+          source ~/opt/scifor/gnu/$(SCIFORVER)/bin/scifor_config_user.sh
+          source ~/opt/dmft_tools/gnu/$(DMFTVER)/bin/dmft_tools_config_user.sh
+          source ~/opt/dmft_ed/gnu/$(LIBEDVER)/etc/dmft_ed_config.sh
           GLOB_INC=$(shell pkg-config --cflags dmft_ed dmft_tools scifor)
           GLOB_LIB=$(shell pkg-config --libs   dmft_ed dmft_tools scifor)
           make all
