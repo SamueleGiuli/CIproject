@@ -57,6 +57,7 @@ jobs:
       - name: Building tests
         shell: bash -l {0}
         run:  |
+          source ~/.bashrc
           export PKG_CONFIG_PATH=~/.pkgconfig.d
           export SCIFORVER=$( ls ~/opt/scifor/gnu )
           export DMFTVER=$(   ls ~/opt/dmft_tools/gnu )
@@ -129,6 +130,7 @@ jobs:
       - name: Building tests
         shell: bash -l {0}
         run:   |
+          source ~/.bashrc
           export PKG_CONFIG_PATH=~/.pkgconfig.d
           export SCIFORVER=$( ls ~/opt/scifor/gnu )
           export DMFTVER=$(   ls ~/opt/dmft_tools/gnu )
