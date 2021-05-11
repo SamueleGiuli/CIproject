@@ -127,3 +127,11 @@ jobs:
         run: ./inst_LIB_DMFT_ED.sh
 
 
+#Testing
+      - name: Building tests
+        shell: bash -l {0}
+        run: make all
+      - name: Testing...
+        shell: bash -l {0}
+        run: make test
+
