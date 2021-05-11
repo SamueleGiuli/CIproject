@@ -88,13 +88,17 @@ jobs:
       - name: gfortran-info
         run: gfortran --version
 
+      - name: gfortran-9-info
+        run: gfortran-9 --version
+
+
 #Install BLAS and LAPACK
-      - name: blas-n-lapack-install
-        shell: bash -l {0}
-        run: |
-          alias gfortran='gfortran-9'
-          brew install lapack openblas
-          gfortran --version
+#      - name: blas-n-lapack-install
+#        shell: bash -l {0}
+#        run: |
+#          alias gfortran='gfortran-9'
+#          brew install lapack openblas
+#          gfortran --version
 
 
 #Install OpenMPI
