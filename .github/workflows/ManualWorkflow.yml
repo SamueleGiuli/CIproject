@@ -93,12 +93,9 @@ jobs:
 
 
 #Install BLAS and LAPACK
-#      - name: blas-n-lapack-install
-#        shell: bash -l {0}
-#        run: |
-#          alias gfortran='gfortran-9'
-#          brew install lapack openblas
-#          gfortran --version
+      - name: blas-n-lapack-install
+        shell: bash -l {0}
+        run: brew install lapack openblas
 
 
 #Install OpenMPI
@@ -111,9 +108,7 @@ jobs:
         run: git clone https://github.com/QcmPlab/SciFortran.git scifor
       - name: Install SciFortran
         shell: bash -l {0}
-        run: |
-          alias gfortran='gfortran-9'
-          ./inst_scifor.sh
+        run: ./inst_scifor.sh
 
 #Set up DMFTtools
       - name: Cloning DMFTtools
