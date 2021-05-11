@@ -7,8 +7,9 @@ source ~/.bashrc
 #export PATH=${PATH}:/home/${USER}/.openmpi/bin/
 #export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/${USER}/.openmpi/lib/
 
+ls
+#Change in case of ver>=10.x.x
 ./GetGFversion.sh "scifor"
-
 
 cd scifor
 mkdir build

@@ -13,5 +13,6 @@ if [ "$GF_CHAR" = "." ]
 then
     echo "gfortran version: $GFVER < 10.x.x"
 else
+    ls
     sed -i 's/-cpp -ffree-line-length-none/-cpp -ffree-line-length-none  -w -fallow-argument-mismatch/g' ./$1/CMakeLists.txt
 fi
