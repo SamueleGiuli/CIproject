@@ -9,7 +9,7 @@ program test_eigh
   real(8) :: e(2)
   logical :: info
   
-  e(1) = -1.d0  +4.d0 !Induced Error
+  e(1) = -1.d0  !+4.d0 !Induced Error
   e(2) = 3.d0
   d=1.d0
   u=2.d0
