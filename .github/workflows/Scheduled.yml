@@ -13,25 +13,129 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - name: gfortran-info
+        run: gfortran --version
 
-      - name: Building executables
-        run: make build
+#Install BLAS and LAPACK
+      - name: blas-n-lapack-install
+        shell: bash -l {0}
+        run: sudo apt-get install libblas-dev liblapack-dev
 
-      - name: Running TestFunc.x
-        run: make testing
+#Install OpenMPI
+      - name: install-openmpi
+        run: sudo apt-get install -y openmpi-bin
+
+#Set up SciFortran
+      - name: Cloning SciFortran
+        shell: bash -l {0}
+        run: git clone https://github.com/QcmPlab/SciFortran.git scifor
+      - name: Install SciFortran
+        shell: bash -l {0}
+        run: ./inst_scifor.sh
+
+#Set up DMFTtools
+      - name: Cloning DMFTtools
+        shell: bash -l {0}
+        run: git clone https://github.com/QcmPlab/DMFTtools.git DMFTtools
+      - name: Install DMFTtools
+        shell: bash -l {0}
+        run: ./inst_DMFTtools.sh
+
+#Set up LIB_DMFT_ED
+      - name: Cloning LIB_DMFT_ED
+        shell: bash -l {0}
+        run: git clone https://github.com/QcmPlab/LIB_DMFT_ED.git LIB_DMFT_ED
+      - name: Install LIB_DMFT_ED
+        shell: bash -l {0}
+        run: ./inst_LIB_DMFT_ED.sh
+
+#Testing
+      - name: Building tests
+        shell: bash -l {0}
+        run:  |
+          source ~/.bashrc
+          export PKG_CONFIG_PATH=~/.pkgconfig.d
+          export SCIFORVER=$( ls ~/opt/scifor/gnu )
+          export DMFTVER=$(   ls ~/opt/dmft_tools/gnu )
+          export LIBEDVER=$(  ls ~/opt/dmft_ed )
+          source ~/opt/scifor/gnu/$(SCIFORVER)/bin/scifor_config_user.sh
+          source ~/opt/dmft_tools/gnu/$(DMFTVER)/bin/dmft_tools_config_user.sh
+          source ~/opt/dmft_ed/gnu/$(LIBEDVER)/etc/dmft_ed_config.sh
+          export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor)
+          export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor | sed  "s/;/ /g"  | sed 's/\\/  /g' )
+          make all
         
+      - name: Testing...
+        shell: bash -l {0}
+        run: make test
+
+
+
+
   test-macos-10_15:
     runs-on: macos-10.15
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
+
+#Reinstall gfortran
       - name: Required compiler
-        run: brew reinstall gfortran
+        run:  brew reinstall gfortran
+      - name: gfortran-info
+        run: gfortran --version
 
-      - name: Building executables
-        run: make build
+#Install BLAS and LAPACK
+      - name: blas-n-lapack-install
+        shell: bash -l {0}
+        run: brew install lapack openblas
 
-      - name: Running TestFunc.x
-        run: make testing
+#Install OpenMPI
+      - name: install-openmpi
+        run: brew install openmpi
+
+#Set up SciFortran
+      - name: Cloning SciFortran
+        shell: bash -l {0}
+        run: git clone https://github.com/QcmPlab/SciFortran.git scifor
+      - name: Install SciFortran
+        shell: bash -l {0}
+        run: ./inst_scifor.sh
+
+#Set up DMFTtools
+      - name: Cloning DMFTtools
+        shell: bash -l {0}
+        run: git clone https://github.com/QcmPlab/DMFTtools.git DMFTtools
+      - name: Install DMFTtools
+        shell: bash -l {0}
+        run: ./inst_DMFTtools.sh
+
+#Set up LIB_DMFT_ED
+      - name: Cloning LIB_DMFT_ED
+        shell: bash -l {0}
+        run: git clone https://github.com/QcmPlab/LIB_DMFT_ED.git LIB_DMFT_ED
+      - name: Install LIB_DMFT_ED
+        shell: bash -l {0}
+        run: ./inst_LIB_DMFT_ED.sh
+
+
+#Testing
+      - name: Building tests
+        shell: bash -l {0}
+        run:   |
+          source ~/.bashrc
+          export PKG_CONFIG_PATH=~/.pkgconfig.d
+          export SCIFORVER=$( ls ~/opt/scifor/gnu )
+          export DMFTVER=$(   ls ~/opt/dmft_tools/gnu )
+          export LIBEDVER=$(  ls ~/opt/dmft_ed )
+          source ~/opt/scifor/gnu/$(SCIFORVER)/bin/scifor_config_user.sh
+          source ~/opt/dmft_tools/gnu/$(DMFTVER)/bin/dmft_tools_config_user.sh
+          source ~/opt/dmft_ed/gnu/$(LIBEDVER)/etc/dmft_ed_config.sh
+          export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor)
+          export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor | sed  "s/;/ /g"  | sed 's/\\/  /g' )
+          make all
+        
+      - name: Testing...
+        shell: bash -l {0}
+        run: make test
+

@@ -20,14 +20,6 @@ jobs:
 #Install OpenMPI
       - name: install-openmpi
         run: sudo apt-get install -y openmpi-bin
-#      - name: set-openmpi-path
-#        shell: bash -l {0}
-#        run: |
-#          export PATH=${PATH}:/home/${USER}/.openmpi/bin/
-#          export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/${USER}/.openmpi/lib/
-#          echo ${PATH}
-#          echo ${LD_LIBRARY_PATH}
-
 
 #Set up SciFortran
       - name: Cloning SciFortran
@@ -86,19 +78,13 @@ jobs:
 #Reinstall gfortran
       - name: Required compiler
         run:  brew reinstall gfortran
-
       - name: gfortran-info
         run: gfortran --version
-
-      - name: gfortran-9-info
-        run: gfortran-9 --version
-
 
 #Install BLAS and LAPACK
       - name: blas-n-lapack-install
         shell: bash -l {0}
         run: brew install lapack openblas
-
 
 #Install OpenMPI
       - name: install-openmpi
