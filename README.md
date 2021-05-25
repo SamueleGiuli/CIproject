@@ -7,3 +7,11 @@ This repository contains an early attempt to construct a CI workflow, within the
 * The script GetGFversion.sh takes care of gfortran version that is being used.
 * The folder unittest contains some tests for SciFortran functions.
 * The script RunTests.sh takes care of running the tests.
+
+
+
+### Workflow status:
+
+Weekly test: ![example workflow](https://github.com/SamueleGiuli/TestActions/actions/workflows/Scheduled.yml/badge.svg)
+
+Manual test: ![example workflow](https://github.com/SamueleGiuli/TestActions/actions/workflows/ManualWorkflow.yml/badge.svg)
