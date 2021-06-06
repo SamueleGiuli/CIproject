@@ -2,6 +2,10 @@ name: Manually triggered CI workflow to execute unit tests
 
 on: workflow_dispatch
 
+defaults:
+  run:
+    shell: bash -l {0}
+
 jobs:
   test-ubuntu-20_04:
     runs-on: ubuntu-20.04
@@ -14,7 +18,6 @@ jobs:
 
 #Install BLAS and LAPACK
       - name: blas-n-lapack-install
-        shell: bash -l {0}
         run: sudo apt-get install libblas-dev liblapack-dev
 
 #Install OpenMPI
@@ -23,31 +26,29 @@ jobs:
 
 #Set up SciFortran
       - name: Cloning SciFortran
-        shell: bash -l {0}
         run: git clone https://github.com/QcmPlab/SciFortran.git scifor
       - name: Install SciFortran
-        shell: bash -l {0}
         run: ./inst_scifor.sh
 
 #Set up DMFTtools
       - name: Cloning DMFTtools
-        shell: bash -l {0}
         run: git clone https://github.com/QcmPlab/DMFTtools.git DMFTtools
       - name: Install DMFTtools
-        shell: bash -l {0}
         run: ./inst_DMFTtools.sh
 
 #Set up LIB_DMFT_ED
       - name: Cloning LIB_DMFT_ED
-        shell: bash -l {0}
         run: git clone https://github.com/QcmPlab/LIB_DMFT_ED.git LIB_DMFT_ED
       - name: Install LIB_DMFT_ED
-        shell: bash -l {0}
         run: ./inst_LIB_DMFT_ED.sh
+
+
+#Clone Drivers
+      - name: Cloning Drivers
+        run: git clone https://github.com/QcmPlab/Driver-Database.git Driver-Database
 
 #Testing
       - name: Building tests
-        shell: bash -l {0}
         run:  |
           source ~/.bashrc
           export PKG_CONFIG_PATH=~/.pkgconfig.d
@@ -62,7 +63,6 @@ jobs:
           make all
         
       - name: Testing...
-        shell: bash -l {0}
         run: make test
 
 
@@ -83,7 +83,6 @@ jobs:
 
 #Install BLAS and LAPACK
       - name: blas-n-lapack-install
-        shell: bash -l {0}
         run: brew install lapack openblas
 
 #Install OpenMPI
@@ -92,32 +91,30 @@ jobs:
 
 #Set up SciFortran
       - name: Cloning SciFortran
-        shell: bash -l {0}
         run: git clone https://github.com/QcmPlab/SciFortran.git scifor
       - name: Install SciFortran
-        shell: bash -l {0}
         run: ./inst_scifor.sh
 
 #Set up DMFTtools
       - name: Cloning DMFTtools
-        shell: bash -l {0}
         run: git clone https://github.com/QcmPlab/DMFTtools.git DMFTtools
       - name: Install DMFTtools
-        shell: bash -l {0}
         run: ./inst_DMFTtools.sh
 
 #Set up LIB_DMFT_ED
       - name: Cloning LIB_DMFT_ED
-        shell: bash -l {0}
         run: git clone https://github.com/QcmPlab/LIB_DMFT_ED.git LIB_DMFT_ED
       - name: Install LIB_DMFT_ED
-        shell: bash -l {0}
         run: ./inst_LIB_DMFT_ED.sh
 
 
+
+#Clone Drivers
+      - name: Cloning Drivers
+        run: git clone https://github.com/QcmPlab/Driver-Database.git Driver-Database
+
 #Testing
       - name: Building tests
-        shell: bash -l {0}
         run:   |
           source ~/.bashrc
           export PKG_CONFIG_PATH=~/.pkgconfig.d
@@ -132,6 +129,5 @@ jobs:
           make all
         
       - name: Testing...
-        shell: bash -l {0}
         run: make test
 
