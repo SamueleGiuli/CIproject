@@ -42,6 +42,12 @@ jobs:
       - name: Install LIB_DMFT_ED
         run: ./inst_LIB_DMFT_ED.sh
 
+#Set up Slave_Spins
+      - name: Cloning Slave_Spins
+        run: git clone https://github.com/QcmPlab/Slave-Spins Slave_Spins
+      - name: Install Slave_Spins
+        run: ./inst_Slave_Spins.sh
+
 
 #Set up Drivers
       - name: Cloning Drivers
@@ -57,11 +63,13 @@ jobs:
           export SCIFORVER=$( ls ~/opt/scifor/gnu )
           export DMFTVER=$(   ls ~/opt/dmft_tools/gnu )
           export LIBEDVER=$(  ls ~/opt/dmft_ed )
+          export SSPINVER=$(  ls ~/opt/slave_spins )
           source ~/opt/scifor/gnu/$(SCIFORVER)/bin/scifor_config_user.sh
           source ~/opt/dmft_tools/gnu/$(DMFTVER)/bin/dmft_tools_config_user.sh
           source ~/opt/dmft_ed/gnu/$(LIBEDVER)/etc/dmft_ed_config.sh
-          export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor)
-          export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor | sed  "s/;/ /g"  | sed 's/\\/  /g' )
+          source ~/opt/dmft_ed/gnu/$(SSPINVER)/etc/slave_spins_config.sh
+          export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor slave_spins)
+          export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor slave_spins | sed  "s/;/ /g"  | sed 's/\\/  /g' )
           make all
         
       - name: Testing...
@@ -109,6 +117,11 @@ jobs:
       - name: Install LIB_DMFT_ED
         run: ./inst_LIB_DMFT_ED.sh
 
+#Set up Slave_Spins
+      - name: Cloning Slave_Spins
+        run: git clone https://github.com/QcmPlab/Slave-Spins Slave_Spins
+      - name: Install Slave_Spins
+        run: ./inst_Slave_Spins.sh
 
 #Clone Drivers
       - name: Cloning Drivers
