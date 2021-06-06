@@ -14,5 +14,5 @@ while read driver; do
     sed -i "s/^EXE=.*/EXE=${driver} /" test.txt Makefile
     make
     echo "Succesfully installed ${driver}"
-done < ../drivers_to_test.txt done
+done < ../drivers_to_test.txt
 cd ..
