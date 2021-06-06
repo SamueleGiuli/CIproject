@@ -46,7 +46,7 @@ jobs:
 #Set up Drivers
       - name: Cloning Drivers
         run: git clone https://github.com/QcmPlab/Driver-Database.git Driver-Database
-        - name: Install Drivers
+      - name: Install Drivers
         run: ./inst_Drivers.sh
 
 #Testing
@@ -110,11 +110,10 @@ jobs:
         run: ./inst_LIB_DMFT_ED.sh
 
 
-
 #Clone Drivers
       - name: Cloning Drivers
         run: git clone https://github.com/QcmPlab/Driver-Database.git Driver-Database
-        - name: Install Drivers
+      - name: Install Drivers
         run: ./inst_Drivers.sh
 
 #Testing
