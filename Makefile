@@ -4,7 +4,7 @@ FFLAGS:= -O2
 TSTDIR:=unittest
 TSTBIN:=unittest/bin
 
-all: $(TSTBIN) Compile_Drivers
+all: $(TSTBIN) 
 
 #Remember to remove these scifor tests
 	$(FC) $(FFLAGS) $(TSTDIR)/asserting.f90 $(TSTDIR)/test_sf_eigh.f90 -o $(TSTBIN)/test_eigh.x $(GLOB_INC) $(GLOB_LIB)
