@@ -53,7 +53,18 @@ jobs:
       - name: Cloning Drivers
         run: git clone https://github.com/QcmPlab/Driver-Database.git Driver-Database
       - name: Install Drivers
-        run: ./inst_Drivers.sh
+        run:  |
+	
+          export PKG_CONFIG_PATH=~/.pkgconfig.d
+          export SCIFORVER=$( ls ~/opt/scifor/gnu )
+          export DMFTVER=$(   ls ~/opt/dmft_tools/gnu )
+          export LIBEDVER=$(  ls ~/opt/dmft_ed )
+          export SSPINVER=$(  ls ~/opt/slave_spins )
+          source ~/opt/scifor/gnu/$(SCIFORVER)/bin/scifor_config_user.sh
+          source ~/opt/dmft_tools/gnu/$(DMFTVER)/bin/dmft_tools_config_user.sh
+          source ~/opt/dmft_ed/gnu/$(LIBEDVER)/etc/dmft_ed_config.sh
+          source ~/opt/dmft_ed/gnu/$(SSPINVER)/etc/slave_spins_config.sh
+          ./inst_Drivers.sh
 
 #Testing
       - name: Building tests
@@ -117,17 +128,30 @@ jobs:
       - name: Install LIB_DMFT_ED
         run: ./inst_LIB_DMFT_ED.sh
 
+
 #Set up Slave_Spins
       - name: Cloning Slave_Spins
         run: git clone https://github.com/QcmPlab/Slave-Spins Slave_Spins
       - name: Install Slave_Spins
         run: ./inst_Slave_Spins.sh
 
-#Clone Drivers
+
+#Set up Drivers
       - name: Cloning Drivers
         run: git clone https://github.com/QcmPlab/Driver-Database.git Driver-Database
       - name: Install Drivers
-        run: ./inst_Drivers.sh
+        run:  |
+	
+          export PKG_CONFIG_PATH=~/.pkgconfig.d
+          export SCIFORVER=$( ls ~/opt/scifor/gnu )
+          export DMFTVER=$(   ls ~/opt/dmft_tools/gnu )
+          export LIBEDVER=$(  ls ~/opt/dmft_ed )
+          export SSPINVER=$(  ls ~/opt/slave_spins )
+          source ~/opt/scifor/gnu/$(SCIFORVER)/bin/scifor_config_user.sh
+          source ~/opt/dmft_tools/gnu/$(DMFTVER)/bin/dmft_tools_config_user.sh
+          source ~/opt/dmft_ed/gnu/$(LIBEDVER)/etc/dmft_ed_config.sh
+          source ~/opt/dmft_ed/gnu/$(SSPINVER)/etc/slave_spins_config.sh
+          ./inst_Drivers.sh
 
 #Testing
       - name: Building tests
