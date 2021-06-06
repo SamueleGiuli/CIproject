@@ -54,6 +54,7 @@ jobs:
         run: git clone https://github.com/QcmPlab/Driver-Database.git Driver-Database
       - name: Install Drivers
         run:  |
+          source ~/.bashrc
           export PKG_CONFIG_PATH=~/.pkgconfig.d
           export SCIFORVER=$( ls ~/opt/scifor/gnu )
           export DMFTVER=$(   ls ~/opt/dmft_tools/gnu )
@@ -140,6 +141,7 @@ jobs:
         run: git clone https://github.com/QcmPlab/Driver-Database.git Driver-Database
       - name: Install Drivers
         run:  |
+          source ~/.bashrc
           export PKG_CONFIG_PATH=~/.pkgconfig.d
           export SCIFORVER=$( ls ~/opt/scifor/gnu )
           export DMFTVER=$(   ls ~/opt/dmft_tools/gnu )
