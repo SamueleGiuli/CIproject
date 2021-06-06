@@ -9,11 +9,10 @@ source ~/.bashrc
 
 cd Driver-Database
 
-for driver in (../driver_to_test.txt)
-do
+while read driver; do
     #sed che cambia EXE
     sed -i "s/^EXE=.*/EXE=${driver} /" test.txt Makefile
     make
     echo "Succesfully installed ${driver}"
-done
+done < ../drivers_to_test.txt done
 cd ..
