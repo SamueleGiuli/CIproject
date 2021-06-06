@@ -64,6 +64,8 @@ jobs:
           source ~/opt/dmft_tools/gnu/$(DMFTVER)/bin/dmft_tools_config_user.sh
           source ~/opt/dmft_ed/gnu/$(LIBEDVER)/etc/dmft_ed_config.sh
           source ~/opt/dmft_ed/gnu/$(SSPINVER)/etc/slave_spins_config.sh
+          export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor slave_spins)
+          export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor slave_spins | sed  "s/;/ /g"  | sed 's/\\/  /g' )
           ./inst_Drivers.sh
 
 #Testing
@@ -151,6 +153,8 @@ jobs:
           source ~/opt/dmft_tools/gnu/$(DMFTVER)/bin/dmft_tools_config_user.sh
           source ~/opt/dmft_ed/gnu/$(LIBEDVER)/etc/dmft_ed_config.sh
           source ~/opt/dmft_ed/gnu/$(SSPINVER)/etc/slave_spins_config.sh
+          export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor slave_spins)
+          export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor slave_spins | sed  "s/;/ /g"  | sed 's/\\/  /g' )
           ./inst_Drivers.sh
 
 #Testing
