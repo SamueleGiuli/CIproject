@@ -57,7 +57,7 @@ jobs:
         run:  |
           source ~/.bashrc
           echo "1"
-	  export TERM=xterm #For interactive shell, otherwise problems for colors
+          export TERM=xterm #For interactive shell, otherwise problems for colors
           export PKG_CONFIG_PATH=~/.pkgconfig.d
           echo "2"
           source ~/opt/scifor/gnu/*/bin/scifor_config_user.sh
