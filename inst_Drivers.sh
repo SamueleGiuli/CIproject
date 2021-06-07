@@ -21,7 +21,7 @@ cd Driver-Database
 while read driver; do
     #sed che cambia EXE
     echo "Installing driver ${driver}"
-    sed -i "s/^EXE=.*/EXE=${driver} /" Makefile
+    sed -i "s/^EXE=.*/EXE=${driver}/" Makefile
     echo "sed done"
     make
     echo "Succesfully installed ${driver}"
