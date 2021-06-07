@@ -86,6 +86,7 @@ jobs:
           source ~/opt/dmft_ed/gnu/*/etc/dmft_ed_config.sh
           source ~/opt/slave_spins/gnu/*/etc/slave_spins_config.sh
           echo "3"
+          ls
           ./inst_Drivers.sh
 
 
