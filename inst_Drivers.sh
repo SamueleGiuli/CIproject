@@ -3,20 +3,14 @@
 #Errors
 set -e
 
-#Sourcing .bashrc
-#source ~/.bashrc
-
-#Sourcing .bashrc
-#source ~/.bashrc
-#SCIFORVER=$( ls ~/opt/scifor/gnu)
-#source ~/opt/scifor/gnu/${SCIFORVER}/bin/scifor_config_user.sh
-#DMFTVER=$( ls ~/opt/dmft_tools/gnu )
-#source ~/opt/dmft_tools/gnu/${DMFTVER}/bin/dmft_tools_config_user.sh
-
+#Checking that scifor properly links libraries (commor mistake in various OS)
 
 
 
 cd Driver-Database
+
+sed -i "s/^export GLOB_INC=.*/export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor slave_spins)/" Makefile
+sed -i "s/^export GLOB_LIB=.*/export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor slave_spins | sed  "s/;/ /g"  | sed 's/\\/  /g' )/" Makefile
 
 while read driver; do
     #sed che cambia EXE
