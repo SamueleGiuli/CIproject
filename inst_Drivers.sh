@@ -5,7 +5,7 @@ set -e
 
 #Checking that scifor properly links libraries (commor mistake in various OS)
 
-if [! -d $HOME/.bin];then mkdir $HOME/.bin; fi
+if [ ! -d $HOME/.bin ];then mkdir $HOME/.bin; fi
 
 cd Driver-Database
 
