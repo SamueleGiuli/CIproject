@@ -9,7 +9,7 @@ set -e
 
 cd Driver-Database
 
-sed -i "s~^GLOB_LIB:=.*~GLOB_LIB:=\$( pkg-config --libs   dmft_ed dmft_tools scifor | sed  \"s/;/ /g\"  | sed 's/\\\\/  /g' )" Makefile
+sed -i "s~^GLOB_LIB:=.*~GLOB_LIB:=\$( pkg-config --libs   dmft_ed dmft_tools scifor | sed  \"s/;/ /g\"  | sed 's/\\\\/  /g' )~" Makefile
 
 while read driver; do
     #sed che cambia EXE
