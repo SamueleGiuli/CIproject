@@ -53,13 +53,14 @@ jobs:
       - name: Cloning Drivers
         run: git clone https://github.com/QcmPlab/Driver-Database.git Driver-Database
       - name: Install Drivers
+        shell: bash -l {0}
         run:  |
           source ~/.bashrc
           export PKG_CONFIG_PATH=~/.pkgconfig.d
           export SCIFORVER=$( ls ~/opt/scifor/gnu )
           export DMFTVER=$(   ls ~/opt/dmft_tools/gnu )
-          export LIBEDVER=$(  ls ~/opt/dmft_ed )
-          export SSPINVER=$(  ls ~/opt/slave_spins )
+          export LIBEDVER=$(  ls ~/opt/dmft_ed/gnu )
+          export SSPINVER=$(  ls ~/opt/slave_spins/gnu )
           source ~/opt/scifor/gnu/$(SCIFORVER)/bin/scifor_config_user.sh
           source ~/opt/dmft_tools/gnu/$(DMFTVER)/bin/dmft_tools_config_user.sh
           source ~/opt/dmft_ed/gnu/$(LIBEDVER)/etc/dmft_ed_config.sh
