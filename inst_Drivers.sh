@@ -3,6 +3,7 @@
 #Errors
 set -e
 
+export PKG_CONFIG_PATH=~/.pkgconfig.d
 source ~/.bashrc
 
 #Checking that scifor properly links libraries (commor mistake in various OS)
