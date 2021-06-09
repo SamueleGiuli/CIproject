@@ -51,12 +51,8 @@ jobs:
 #Testing
       - name: Building tests
         run:  |
-          #source ~/.bashrc
-          #export PKG_CONFIG_PATH=~/.pkgconfig.d
-          #source ~/opt/scifor/gnu/*/bin/scifor_config_user.sh
-          #source ~/opt/dmft_tools/gnu/*/bin/dmft_tools_config_user.sh
-          #source ~/opt/dmft_ed/gnu/*/etc/dmft_ed_config.sh
-          #source ~/opt/slave_spins/gnu/*/etc/slave_spins_config.sh
+          source ~/.bashrc
+          export PKG_CONFIG_PATH=~/.pkgconfig.d
           export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor slave_spins)
           export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor slave_spins | sed  "s/;/ /g"  | sed 's/\\/  /g' )
           make all
