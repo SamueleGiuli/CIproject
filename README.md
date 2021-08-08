@@ -15,3 +15,7 @@ This repository contains an early attempt to construct a CI workflow, within the
 Weekly test: ![example workflow](https://github.com/SamueleGiuli/TestActions/actions/workflows/Scheduled.yml/badge.svg)
 
 Manual test: ![example workflow](https://github.com/SamueleGiuli/TestActions/actions/workflows/ManualWorkflow.yml/badge.svg)
+
+### To be done
+
+Driver installation and check results at convergence.
