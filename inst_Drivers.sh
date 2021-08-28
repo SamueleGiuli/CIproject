@@ -3,14 +3,19 @@
 #Errors
 set -e
 
-export PKG_CONFIG_PATH=~/.pkgconfig.d
 source ~/.bashrc
+export PKG_CONFIG_PATH=~/.pkgconfig.d
 
-#Checking that scifor properly links libraries (commor mistake in various OS)
+echo "*************************"
+echo "What's in bahsrc?"
+cat ~/.bashrc
+echo "End bashrc"
+echo "*************************"
 
 if [ ! -d $HOME/.bin ];then mkdir $HOME/.bin; fi
 
 cd Driver-Database
+#Checking that scifor properly links libraries (commor mistake in various OS)
 
 sed -i "s~^GLOB_LIB:=.*~GLOB_LIB:=\$( pkg-config --libs   dmft_ed dmft_tools scifor | sed  \"s/;/ /g\"  | sed 's/\\\\/  /g' )~" Makefile
 
