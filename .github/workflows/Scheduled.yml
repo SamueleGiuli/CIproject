@@ -4,7 +4,7 @@ name: Scheduled CI workflow
 on:
   schedule:
 #             min - hour - day of month - month - day of week
-    - cron:  '0 9,17  * 5 1,4' #Mon and Thu of May at 9:00 and 17:00
+    - cron:  '0 9 1 * *' #Mon and Thu of May at 9:00 and 17:00
 
 jobs:
   test-ubuntu-20_04:
