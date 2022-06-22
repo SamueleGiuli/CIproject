@@ -7,7 +7,7 @@ set -e
 source ~/.bashrc
 
 #Correction based on GF-VER
-./GetGFversion.sh "scifor"
+#./GetGFversion.sh "scifor"
 
 cd scifor
 mkdir build

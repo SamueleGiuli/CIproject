@@ -12,7 +12,7 @@ source ~/.bashrc
 #source ~/opt/dmft_tools/gnu/${DMFTVER}/bin/dmft_tools_config_user.sh
 
 #Correction based on GF-VER
-./GetGFversion.sh "LIB_DMFT_ED"
+#./GetGFversion.sh "LIB_DMFT_ED"
 
 cd LIB_DMFT_ED
 mkdir build

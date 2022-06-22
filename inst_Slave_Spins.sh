@@ -10,7 +10,7 @@ source ~/.bashrc
 #source ~/opt/scifor/gnu/${SCIFORVER}/bin/scifor_config_user.sh
 
 #Correction based on GF-VER
-./GetGFversion.sh "Slave_Spins"
+#./GetGFversion.sh "Slave_Spins"
 
 cd Slave_Spins
 mkdir build

@@ -11,7 +11,7 @@ source ~/.bashrc
 #source ~/opt/scifor/gnu/${SCIFORVER}/bin/scifor_config_user.sh
 
 #Correction based of GF-VER
-./GetGFversion.sh "DMFTtools"
+#./GetGFversion.sh "DMFTtools"
 
 
 
