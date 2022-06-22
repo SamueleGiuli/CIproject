@@ -11,44 +11,56 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
+
+#********* SETUP PART **********
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: gfortran-info
         run: gfortran --version
 
-#Install BLAS and LAPACK
+      # Uses pre-defined fortran setup
+      - uses: awvwgk/setup-fortran@main
+        id: setu  p-fortran
+        with:	  
+          compiler: gcc
+          version: 9
+# Could be smart to have a unnique setup action for QcmPlab 
+# Install BLAS and LAPACK 
       - name: blas-n-lapack-install
         run: sudo apt-get install libblas-dev liblapack-dev
 
-#Install OpenMPI
+# Install OpenMPI
       - name: install-openmpi
         run: sudo apt-get install -y openmpi-bin
 
-#Set up SciFortran
+#********* BUILD PART **********
+
+# Build SciFortran
       - name: Cloning SciFortran
         run: git clone https://github.com/QcmPlab/SciFortran.git scifor
       - name: Install SciFortran
         run: ./inst_scifor.sh
 
-#Set up DMFTtools
+# Build DMFTtools
       - name: Cloning DMFTtools
         run: git clone https://github.com/QcmPlab/DMFTtools.git DMFTtools
       - name: Install DMFTtools
         run: ./inst_DMFTtools.sh
 
-#Set up LIB_DMFT_ED
+# Build LIB_DMFT_ED
       - name: Cloning LIB_DMFT_ED
         run: git clone https://github.com/QcmPlab/LIB_DMFT_ED.git LIB_DMFT_ED
       - name: Install LIB_DMFT_ED
         run: ./inst_LIB_DMFT_ED.sh
 
-#Set up Slave_Spins
+# Build Slave_Spins
       - name: Cloning Slave_Spins
         run: git clone https://github.com/QcmPlab/Slave-Spins Slave_Spins
       - name: Install Slave_Spins
         run: ./inst_Slave_Spins.sh
 
-#Testing
+# Testing
       - name: Building tests
         run:  |
           source ~/.bashrc
@@ -81,7 +93,7 @@ jobs:
           echo "$( ls )"
           ./inst_Drivers.sh
 
-
+# HERE ADD THE TESTING OF DRIVERS?
 
 
 
@@ -94,10 +106,22 @@ jobs:
       - uses: actions/checkout@v2
 
 #Reinstall gfortran
-      - name: Required compiler
-        run:  brew reinstall gfortran
+#      - name: Required compiler
+#        run:  brew reinstall gfortran
       - name: gfortran-info
         run: gfortran --version
+	
+
+      # Uses pre-defined fortran setup
+      - uses: awvwgk/setup-fortran@main
+        id: setu  p-fortran
+        with:	  
+          compiler: gcc
+          version: 9
+
+      - name: gfortran-info
+        run: gfortran --version
+
 
 #Install BLAS and LAPACK
       - name: blas-n-lapack-install
