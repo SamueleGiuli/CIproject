@@ -18,4 +18,4 @@ Manual test: ![example workflow](https://github.com/SamueleGiuli/TestActions/act
 
 ### To be done
 
-Driver installation and check results at convergence.
+Driver installation and check results at convergence. Separate workflows for single repos.
