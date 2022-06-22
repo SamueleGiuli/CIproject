@@ -29,5 +29,5 @@ make install
 
 cd ../..
 
-echo "  source ~/opt/dmft_ed/gnu/*/etc/modules/dmft_ed/gnu/dmft_ed_config_global.sh" >> ~/.bashrc
+echo "  source ~/opt/dmft_ed/gnu/*/bin/dmft_ed_config_user.sh" >> ~/.bashrc
 echo "\e[32m LIB_DMFT_ED succesfully installed \e[0m"

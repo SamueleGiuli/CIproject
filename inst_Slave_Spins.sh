@@ -29,4 +29,4 @@ cd ../..
 
 echo "\e[32m Slave_Spins succesfully installed \e[0m"
 
-echo "source ~/opt/slave_spins/gnu/*/etc/slave_spins_config.sh" >> ~/.bashrc
+echo "source ~/opt/slave_spins/gnu/*/bin/slave_spins_config.sh" >> ~/.bashrc
