@@ -108,8 +108,8 @@ jobs:
 #Reinstall gfortran
 #      - name: Required compiler
 #        run:  brew reinstall gfortran
-      - name: gfortran-info
-        run: gfortran --version
+#      - name: gfortran-info
+#        run: gfortran --version
 
 
       # Uses pre-defined fortran setup
