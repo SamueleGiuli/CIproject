@@ -12,9 +12,16 @@ source ~/.bashrc
 cd scifor
 mkdir build
 cd build
+
+echo "cmake .."
 cmake .. #-DUSE_MPI=no #Option for non parallelized
+
+echo "make"
 make
+
+echo "make install"
 make install
+
 cd ../..
 
 #SCIFORVER=$( ls ~/opt/scifor/gnu)

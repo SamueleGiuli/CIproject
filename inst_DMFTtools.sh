@@ -18,9 +18,16 @@ source ~/.bashrc
 cd DMFTtools
 mkdir build
 cd build
+
+echo "cmake .."
 cmake .. #-DUSE_MPI=no #Option for non parallelized
+
+echo "make"
 make
+
+echo "make install"
 make install
+
 cd ../..
 
 #DMFTVER=$( ls ~/opt/dmft_tools/gnu )

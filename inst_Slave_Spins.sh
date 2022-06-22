@@ -15,9 +15,16 @@ source ~/.bashrc
 cd Slave_Spins
 mkdir build
 cd build
+
+echo "cmake .."
 cmake .. #-DUSE_MPI=no #Option for non parallelized
+
+echo "make"
 make
+
+echo "make install"
 make install
+
 cd ../..
 
 echo "\e[32m Slave_Spins succesfully installed \e[0m"

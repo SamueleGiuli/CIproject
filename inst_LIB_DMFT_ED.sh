@@ -17,9 +17,16 @@ source ~/.bashrc
 cd LIB_DMFT_ED
 mkdir build
 cd build
+
+echo "cmake .."
 cmake .. #-DUSE_MPI=no #Option for non parallelized
+
+echo "make"
 make
+
+echo "make install"
 make install
+
 cd ../..
 
 echo "  source ~/opt/dmft_ed/gnu/*/etc/dmft_ed_config.sh" >> ~/.bashrc
