@@ -110,7 +110,7 @@ jobs:
 #        run:  brew reinstall gfortran
       - name: gfortran-info
         run: gfortran --version
-	
+
 
       # Uses pre-defined fortran setup
       - uses: awvwgk/setup-fortran@main
