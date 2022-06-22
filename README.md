@@ -12,9 +12,9 @@ This repository contains an early attempt to construct a CI workflow, within the
 
 ### Workflow status:
 
-Weekly test: ![example workflow](https://github.com/SamueleGiuli/TestActions/actions/workflows/Scheduled.yml/badge.svg)
+Weekly test: ![example workflow](https://github.com/SamueleGiuli/CIproject_QcmP/actions/workflows/Scheduled.yml/badge.svg)
 
-Manual test: ![example workflow](https://github.com/SamueleGiuli/TestActions/actions/workflows/ManualWorkflow.yml/badge.svg)
+Manual test: ![example workflow](https://github.com/SamueleGiuli/CIproject_QcmP/actions/workflows/ManualWorkflow.yml/badge.svg)
 
 ### To be done
 
