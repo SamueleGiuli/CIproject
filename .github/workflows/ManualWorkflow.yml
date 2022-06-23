@@ -164,11 +164,13 @@ jobs:
 #Set up Drivers
       - name: Cloning Drivers
         run: git clone https://github.com/QcmPlab/Driver-Database.git Driver-Database
+
       - name: Install Drivers
         run:   |
           source ~/.bashrc
+          ./inst_Drivers.sh
 #          export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor slave_spins)
 #          export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor slave_spins | sed  "s/;/ /g"  | sed 's/\\/  /g' )
-          ./inst_Drivers.sh
+#          ./inst_Drivers.sh
 
 
