@@ -4,7 +4,7 @@
 set -e
 
 #Sourcing .bashrc
-source ~/.QcmP_source
+source ~/.bashrc
 
 #Correction based on GF-VER
 #./GetGFversion.sh "scifor"
