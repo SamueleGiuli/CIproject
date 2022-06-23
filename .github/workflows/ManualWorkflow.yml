@@ -28,7 +28,7 @@ jobs:
           version: 9
 
 # QcmPlab setup
-      - uses: SamueleGiuli/CIproject_QcmP/.github/actions/QcmP-setup
+      - uses: SamueleGiuli/CIproject_QcmP/.github/actions@QcmP-setup
         with:
           pack-type: open
 
@@ -117,7 +117,7 @@ jobs:
           version: 9
 
 # QcmPlab setup
-      - uses: SamueleGiuli/CIproject_QcmP/.github/actions/QcmP-setup
+      - uses: SamueleGiuli/CIproject_QcmP/.github/actions@QcmP-setup
         with:
           pack-type: open
 
