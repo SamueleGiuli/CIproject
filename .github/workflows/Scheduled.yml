@@ -6,136 +6,73 @@ on:
 #             min - hour - day of month - month - day of week
     - cron:  '0 9 1,15 * *' #Mon and Thu of May at 9:00 and 17:00
 
+defaults:
+  run:
+    shell: bash -l {0}
+
 jobs:
-  test-ubuntu-20_04:
-    runs-on: ubuntu-20.04
+  test-QcmP:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-20.04, macos-11]
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+
+#********* SETUP PART **********
+
+# Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: gfortran-info
-        run: gfortran --version
 
-#Install BLAS and LAPACK
-      - name: blas-n-lapack-install
-        shell: bash -l {0}
-        run: sudo apt-get install libblas-dev liblapack-dev
+# Uses pre-defined fortran setup
+      - uses: awvwgk/setup-fortran@main
+        id: setup-fortran
+        with:	  
+          compiler: gcc
+          version: 9
 
-#Install OpenMPI
-      - name: install-openmpi
-        run: sudo apt-get install -y openmpi-bin
+# QcmPlab setup
+      - uses: SamueleGiuli/CIproject_QcmP/.github/actions@main
+        with:
+          pack-type: open
 
-#Set up SciFortran
+#********* BUILD PART **********
+
+# Build SciFortran
       - name: Cloning SciFortran
-        shell: bash -l {0}
         run: git clone https://github.com/QcmPlab/SciFortran.git scifor
       - name: Install SciFortran
-        shell: bash -l {0}
         run: ./inst_scifor.sh
 
-#Set up DMFTtools
+# Build DMFTtools
       - name: Cloning DMFTtools
-        shell: bash -l {0}
         run: git clone https://github.com/QcmPlab/DMFTtools.git DMFTtools
       - name: Install DMFTtools
-        shell: bash -l {0}
         run: ./inst_DMFTtools.sh
 
-#Set up LIB_DMFT_ED
+# Build LIB_DMFT_ED
       - name: Cloning LIB_DMFT_ED
-        shell: bash -l {0}
         run: git clone https://github.com/QcmPlab/LIB_DMFT_ED.git LIB_DMFT_ED
       - name: Install LIB_DMFT_ED
-        shell: bash -l {0}
         run: ./inst_LIB_DMFT_ED.sh
 
-#Testing
+# Build Slave_Spins
+      - name: Cloning Slave_Spins
+        run: git clone https://github.com/QcmPlab/Slave-Spins Slave_Spins
+      - name: Install Slave_Spins
+        run: ./inst_Slave_Spins.sh
+
+#******** TESTING PART ********
+
+# Testing
       - name: Building tests
-        shell: bash -l {0}
         run:  |
-          source ~/.bashrc
+          source ~/.QcmP_source
           export PKG_CONFIG_PATH=~/.pkgconfig.d
-          export SCIFORVER=$( ls ~/opt/scifor/gnu )
-          export DMFTVER=$(   ls ~/opt/dmft_tools/gnu )
-          export LIBEDVER=$(  ls ~/opt/dmft_ed )
-          source ~/opt/scifor/gnu/$(SCIFORVER)/bin/scifor_config_user.sh
-          source ~/opt/dmft_tools/gnu/$(DMFTVER)/bin/dmft_tools_config_user.sh
-          source ~/opt/dmft_ed/gnu/$(LIBEDVER)/etc/dmft_ed_config.sh
-          export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor)
-          export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor | sed  "s/;/ /g"  | sed 's/\\/  /g' )
+          export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor slave_spins)
+          export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor slave_spins | sed  "s/;/ /g"  | sed 's/\\/  /g' )
           make all
-        
+
       - name: Testing...
-        shell: bash -l {0}
         run: make test
-
-
-
-
-  test-macos-10_15:
-    runs-on: macos-10.15
-
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-#Reinstall gfortran
-      - name: Required compiler
-        run:  brew reinstall gfortran
-      - name: gfortran-info
-        run: gfortran --version
-
-#Install BLAS and LAPACK
-      - name: blas-n-lapack-install
-        shell: bash -l {0}
-        run: brew install lapack openblas
-
-#Install OpenMPI
-      - name: install-openmpi
-        run: brew install openmpi
-
-#Set up SciFortran
-      - name: Cloning SciFortran
-        shell: bash -l {0}
-        run: git clone https://github.com/QcmPlab/SciFortran.git scifor
-      - name: Install SciFortran
-        shell: bash -l {0}
-        run: ./inst_scifor.sh
-
-#Set up DMFTtools
-      - name: Cloning DMFTtools
-        shell: bash -l {0}
-        run: git clone https://github.com/QcmPlab/DMFTtools.git DMFTtools
-      - name: Install DMFTtools
-        shell: bash -l {0}
-        run: ./inst_DMFTtools.sh
-
-#Set up LIB_DMFT_ED
-      - name: Cloning LIB_DMFT_ED
-        shell: bash -l {0}
-        run: git clone https://github.com/QcmPlab/LIB_DMFT_ED.git LIB_DMFT_ED
-      - name: Install LIB_DMFT_ED
-        shell: bash -l {0}
-        run: ./inst_LIB_DMFT_ED.sh
-
-
-#Testing
-      - name: Building tests
-        shell: bash -l {0}
-        run:   |
-          source ~/.bashrc
-          export PKG_CONFIG_PATH=~/.pkgconfig.d
-          export SCIFORVER=$( ls ~/opt/scifor/gnu )
-          export DMFTVER=$(   ls ~/opt/dmft_tools/gnu )
-          export LIBEDVER=$(  ls ~/opt/dmft_ed )
-          source ~/opt/scifor/gnu/$(SCIFORVER)/bin/scifor_config_user.sh
-          source ~/opt/dmft_tools/gnu/$(DMFTVER)/bin/dmft_tools_config_user.sh
-          source ~/opt/dmft_ed/gnu/$(LIBEDVER)/etc/dmft_ed_config.sh
-          export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor)
-          export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor | sed  "s/;/ /g"  | sed 's/\\/  /g' )
-          make all
-        
-      - name: Testing...
-        shell: bash -l {0}
-        run: make test
-
