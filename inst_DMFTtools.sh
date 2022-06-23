@@ -10,7 +10,7 @@ cat ~/.QcmP_source
 #export PKG_CONFIG_PATH=~/.pkgconfig.d
 #Sourcing .bashrc
 echo "QcmP_source sourcing.."
-source ~/.QcmP_surce
+source ~/.QcmP_source
 
 #SCIFORVER=$( ls ~/opt/scifor/gnu)
 #source ~/opt/scifor/gnu/${SCIFORVER}/bin/scifor_config_user.sh
