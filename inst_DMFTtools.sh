@@ -6,7 +6,9 @@ set -e
 
 #export PKG_CONFIG_PATH=~/.pkgconfig.d
 #Sourcing .bashrc
+echo "bashrc sourcing.."
 source ~/.bashrc
+
 #SCIFORVER=$( ls ~/opt/scifor/gnu)
 #source ~/opt/scifor/gnu/${SCIFORVER}/bin/scifor_config_user.sh
 
@@ -18,6 +20,8 @@ source ~/.bashrc
 cd DMFTtools
 mkdir build
 cd build
+
+echo "Building..."
 
 echo "cmake .."
 cmake .. #-DUSE_MPI=no #Option for non parallelized
