@@ -63,7 +63,7 @@ jobs:
 # Testing
       - name: Building tests
         run:  |
-          source ~/.bashrc
+          source ~/.QcmP_source
           make all
 #          export PKG_CONFIG_PATH=~/.pkgconfig.d
 #          export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor slave_spins)
@@ -81,7 +81,7 @@ jobs:
       - name: Install Drivers
         shell: bash -l {0}
         run:  |
-          source ~/.bashrc
+          source ~/.QcmP_source
           ./inst_Drivers.sh
 
 # HERE ADD THE TESTING OF DRIVERS?
@@ -151,7 +151,7 @@ jobs:
 #Testing
       - name: Building tests
         run:   |
-          source ~/.bashrc
+          source ~/.QcmP_source
           make all
 #          export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor)
 #          export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor | sed  "s/;/ /g"  | sed 's/\\/  /g' )
@@ -167,7 +167,7 @@ jobs:
 
       - name: Install Drivers
         run:   |
-          source ~/.bashrc
+          source ~/.QcmP_source
           ./inst_Drivers.sh
 #          export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor slave_spins)
 #          export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor slave_spins | sed  "s/;/ /g"  | sed 's/\\/  /g' )

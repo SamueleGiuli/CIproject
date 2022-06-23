@@ -4,13 +4,13 @@
 set -e
 
 
-echo "bashrc:"
-cat ~/.bashrc
+echo "QcmP_source:"
+cat ~/.QcmP_source
 
 #export PKG_CONFIG_PATH=~/.pkgconfig.d
 #Sourcing .bashrc
-echo "bashrc sourcing.."
-source ~/.bashrc
+echo "QcmP_source sourcing.."
+source ~/.QcmP_surce
 
 #SCIFORVER=$( ls ~/opt/scifor/gnu)
 #source ~/opt/scifor/gnu/${SCIFORVER}/bin/scifor_config_user.sh
@@ -38,10 +38,10 @@ make install
 cd ../..
 
 #DMFTVER=$( ls ~/opt/dmft_tools/gnu )
-echo "source ~/opt/dmft_tools/gnu/*/bin/dmft_tools_config_user.sh" >> ~/.bashrc
+echo "source ~/opt/dmft_tools/gnu/*/bin/dmft_tools_config_user.sh" >> ~/.QcmP_source
 echo "\e[32m DMFTtools succesfully installed \e[0m"
 
       
 
-echo "bashrc:"
-cat ~/.bashrc
+echo "QcmP_source:"
+cat ~/.QcmP_source

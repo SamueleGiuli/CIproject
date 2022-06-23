@@ -4,12 +4,12 @@
 set -e
 
 
-echo "bashrc:"
-cat ~/.bashrc
+echo "QcmP_source:"
+cat ~/.QcmP_source
 
 #export PKG_CONFIG_PATH=~/.pkgconfig.d
 #Sourcing .bashrc
-source ~/.bashrc
+source ~/.QcmP_source
 #SCIFORVER=$( ls ~/opt/scifor/gnu)
 #source ~/opt/scifor/gnu/${SCIFORVER}/bin/scifor_config_user.sh
 #DMFTVER=$( ls ~/opt/dmft_tools/gnu )
@@ -33,9 +33,9 @@ make install
 
 cd ../..
 
-echo "  source ~/opt/dmft_ed/gnu/*/bin/dmft_ed_config_user.sh" >> ~/.bashrc
+echo "  source ~/opt/dmft_ed/gnu/*/bin/dmft_ed_config_user.sh" >> ~/.QcmP_source
 echo "\e[32m LIB_DMFT_ED succesfully installed \e[0m"
 
 
-echo "bashrc:"
-cat ~/.bashrc
+echo "QcmP_source:"
+cat ~/.QcmP_source

@@ -3,13 +3,13 @@
 #Errors
 set -e
 
-source ~/.bashrc
+source ~/.QcmP_source
 export PKG_CONFIG_PATH=~/.pkgconfig.d
 
 echo "*************************"
-echo "What's in bahsrc?"
-cat ~/.bashrc
-echo "End bashrc"
+echo "What's in QcmP_source?"
+cat ~/.QcmP_source
+echo "End QcmP_source"
 echo "*************************"
 
 if [ ! -d $HOME/.bin ];then mkdir $HOME/.bin; fi

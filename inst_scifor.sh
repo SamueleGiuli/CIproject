@@ -4,7 +4,7 @@
 set -e
 
 #Sourcing .bashrc
-source ~/.bashrc
+source ~/.QcmP_source
 
 #Correction based on GF-VER
 #./GetGFversion.sh "scifor"
@@ -25,8 +25,8 @@ make install
 cd ../..
 
 #SCIFORVER=$( ls ~/opt/scifor/gnu)
-echo "source ~/opt/scifor/gnu/*/bin/scifor_config_user.sh" >> ~/.bashrc
+echo "source ~/opt/scifor/gnu/*/bin/scifor_config_user.sh" >> ~/.QcmP_source
 echo -e "\e[32m scifor succesfully installed and sourced \e[0m"
 
-echo "bashrc:"
-cat ~/.bashrc
+echo "QcmP_source:"
+cat ~/.QcmP_source

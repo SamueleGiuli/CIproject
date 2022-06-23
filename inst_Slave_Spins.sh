@@ -5,7 +5,7 @@ set -e
 
 #export PKG_CONFIG_PATH=~/.pkgconfig.d
 #Sourcing .bashrc
-source ~/.bashrc
+source ~/.QcmP_source
 #SCIFORVER=$( ls ~/opt/scifor/gnu)
 #source ~/opt/scifor/gnu/${SCIFORVER}/bin/scifor_config_user.sh
 
@@ -29,4 +29,7 @@ cd ../..
 
 echo "\e[32m Slave_Spins succesfully installed \e[0m"
 
-echo "source ~/opt/slave_spins/gnu/*/bin/slave_spins_config_user.sh" >> ~/.bashrc
+echo "source ~/opt/slave_spins/gnu/*/bin/slave_spins_config_user.sh" >> ~/.QcmP_source
+
+echo "QcmP_source"
+cat ~/.QcmP_source
