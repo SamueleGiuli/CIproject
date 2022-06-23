@@ -4,6 +4,9 @@
 set -e
 
 
+echo "bashrc:"
+cat ~/.bashrc
+
 #export PKG_CONFIG_PATH=~/.pkgconfig.d
 #Sourcing .bashrc
 echo "bashrc sourcing.."
@@ -39,3 +42,6 @@ echo "source ~/opt/dmft_tools/gnu/*/bin/dmft_tools_config_user.sh" >> ~/.bashrc
 echo "\e[32m DMFTtools succesfully installed \e[0m"
 
       
+
+echo "bashrc:"
+cat ~/.bashrc

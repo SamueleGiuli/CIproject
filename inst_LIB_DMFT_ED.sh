@@ -3,6 +3,10 @@
 #Errors
 set -e
 
+
+echo "bashrc:"
+cat ~/.bashrc
+
 #export PKG_CONFIG_PATH=~/.pkgconfig.d
 #Sourcing .bashrc
 source ~/.bashrc
@@ -31,3 +35,7 @@ cd ../..
 
 echo "  source ~/opt/dmft_ed/gnu/*/bin/dmft_ed_config_user.sh" >> ~/.bashrc
 echo "\e[32m LIB_DMFT_ED succesfully installed \e[0m"
+
+
+echo "bashrc:"
+cat ~/.bashrc

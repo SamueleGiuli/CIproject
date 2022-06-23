@@ -27,3 +27,6 @@ cd ../..
 #SCIFORVER=$( ls ~/opt/scifor/gnu)
 echo "source ~/opt/scifor/gnu/*/bin/scifor_config_user.sh" >> ~/.bashrc
 echo -e "\e[32m scifor succesfully installed and sourced \e[0m"
+
+echo "bashrc:"
+cat ~/.bashrc
