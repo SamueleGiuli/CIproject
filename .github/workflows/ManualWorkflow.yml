@@ -152,9 +152,10 @@ jobs:
       - name: Building tests
         run:   |
           source ~/.bashrc
+          make all
 #          export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor)
 #          export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor | sed  "s/;/ /g"  | sed 's/\\/  /g' )
-          make all
+#          make all
         
       - name: Testing...
         run: make test
