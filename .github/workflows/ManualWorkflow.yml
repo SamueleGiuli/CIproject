@@ -30,10 +30,7 @@ jobs:
 # QcmPlab setup
       - uses: SamueleGiuli/CIproject_QcmP/.github/actions/QcmP-setup
         with:
-        pack-type: open
-
-
-
+          pack-type: open
 
 # Could be smart to have a unnique setup action for QcmPlab 
 # Install BLAS and LAPACK 
@@ -43,7 +40,7 @@ jobs:
 # Install OpenMPI
 #      - name: install-openmpi
 #        run: sudo apt-get install -y openmpi-bin
-
+#
 #********* BUILD PART **********
 
 # Build SciFortran
@@ -122,7 +119,7 @@ jobs:
 # QcmPlab setup
       - uses: SamueleGiuli/CIproject_QcmP/.github/actions/QcmP-setup
         with:
-        pack-type: open
+          pack-type: open
 
 #Install BLAS and LAPACK
 #      - name: blas-n-lapack-install
