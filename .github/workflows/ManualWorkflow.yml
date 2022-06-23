@@ -18,11 +18,8 @@ jobs:
 
 #********* SETUP PART **********
 
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+# Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
-      - name: gfortran-info
-        run: gfortran --version
 
 # Uses pre-defined fortran setup
       - uses: awvwgk/setup-fortran@main
@@ -36,15 +33,6 @@ jobs:
         with:
           pack-type: open
 
-# Could be smart to have a unnique setup action for QcmPlab 
-# Install BLAS and LAPACK 
-#      - name: blas-n-lapack-install
-#        run: sudo apt-get install libblas-dev liblapack-dev
-#
-# Install OpenMPI
-#      - name: install-openmpi
-#        run: sudo apt-get install -y openmpi-bin
-#
 #********* BUILD PART **********
 
 # Build SciFortran
@@ -71,6 +59,8 @@ jobs:
       - name: Install Slave_Spins
         run: ./inst_Slave_Spins.sh
 
+#******** TESTING PART ********
+
 # Testing
       - name: Building tests
         run:  |
@@ -82,16 +72,3 @@ jobs:
 
       - name: Testing...
         run: make test
-
-
-
-#Set up Drivers
-#      - name: Cloning Drivers
-#        run: git clone https://github.com/QcmPlab/Driver-Database.git Driver-Database
-#      - name: Install Drivers
-#        shell: bash -l {0}
-#        run:  |
-#          source ~/.QcmP_source
-#          ./inst_Drivers.sh
-#
-# HERE ADD THE TESTING OF DRIVERS?
