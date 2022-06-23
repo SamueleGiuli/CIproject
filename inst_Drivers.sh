@@ -17,7 +17,7 @@ if [ ! -d $HOME/.bin ];then mkdir $HOME/.bin; fi
 cd Driver-Database
 #Checking that scifor properly links libraries (commor mistake in various OS)
 
-#sed -i "s~^GLOB_LIB:=.*~GLOB_LIB:=\$( pkg-config --libs   dmft_ed dmft_tools scifor | sed  \"s/;/ /g\"  | sed 's/\\\\/  /g' )~" Makefile
+#sed -i "s~^GLOB_LIB:=.*~GLOB_LIB:=\$( pkg-config --libs   dmft_ed dmft_tools scifor | sed  \"s/;/ /g\"  | sed 's/\\\\/x  /g' )~" Makefile
 
 while read driver; do
     #sed che cambia EXE
