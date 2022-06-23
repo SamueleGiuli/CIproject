@@ -76,14 +76,14 @@ jobs:
 
 
 #Set up Drivers
-      - name: Cloning Drivers
-        run: git clone https://github.com/QcmPlab/Driver-Database.git Driver-Database
-      - name: Install Drivers
-        shell: bash -l {0}
-        run:  |
-          source ~/.QcmP_source
-          ./inst_Drivers.sh
-
+#      - name: Cloning Drivers
+#        run: git clone https://github.com/QcmPlab/Driver-Database.git Driver-Database
+#      - name: Install Drivers
+#        shell: bash -l {0}
+#        run:  |
+#          source ~/.QcmP_source
+#          ./inst_Drivers.sh
+#
 # HERE ADD THE TESTING OF DRIVERS?
 
 
@@ -103,24 +103,24 @@ jobs:
 #        run: gfortran --version
 
 
-      # Uses pre-defined fortran setup
+# Uses pre-defined fortran setup
       - uses: awvwgk/setup-fortran@main
         id: setup-fortran
         with:	  
           compiler: gcc
           version: 9
 
-      - name: gfortran-info
-        run: gfortran --version
+# Set-up for needed packages
+      - uses: 
 
 
 #Install BLAS and LAPACK
-      - name: blas-n-lapack-install
-        run: brew install lapack openblas
-
+#      - name: blas-n-lapack-install
+#        run: brew install lapack openblas
+#
 #Install OpenMPI
-      - name: install-openmpi
-        run: brew install openmpi
+#      - name: install-openmpi
+#        run: brew install openmpi
 
 #Set up SciFortran
       - name: Cloning SciFortran
@@ -161,13 +161,13 @@ jobs:
 
 
 #Set up Drivers
-      - name: Cloning Drivers
-        run: git clone https://github.com/QcmPlab/Driver-Database.git Driver-Database
-
-      - name: Install Drivers
-        run:   |
-          source ~/.QcmP_source
-          ./inst_Drivers.sh
+#      - name: Cloning Drivers
+#        run: git clone https://github.com/QcmPlab/Driver-Database.git Driver-Database
+#
+#      - name: Install Drivers
+#        run:   |
+#          source ~/.QcmP_source
+#          ./inst_Drivers.sh
 #          export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor slave_spins)
 #          export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor slave_spins | sed  "s/;/ /g"  | sed 's/\\/  /g' )
 #          ./inst_Drivers.sh
