@@ -64,9 +64,9 @@ jobs:
       - name: Building tests
         run:  |
           source ~/.bashrc
-          export PKG_CONFIG_PATH=~/.pkgconfig.d
-          export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor slave_spins)
-          export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor slave_spins | sed  "s/;/ /g"  | sed 's/\\/  /g' )
+#          export PKG_CONFIG_PATH=~/.pkgconfig.d
+#          export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor slave_spins)
+#          export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor slave_spins | sed  "s/;/ /g"  | sed 's/\\/  /g' )
           make all
         
       - name: Testing...
@@ -80,17 +80,7 @@ jobs:
       - name: Install Drivers
         shell: bash -l {0}
         run:  |
-          #source ~/.bashrc
-          echo "1"
-          export TERM=xterm #For interactive shell, otherwise problems for colors
-          export PKG_CONFIG_PATH=~/.pkgconfig.d
-          echo "2"
-          #source ~/opt/scifor/gnu/*/bin/scifor_config_user.sh
-          #source ~/opt/dmft_tools/gnu/*/bin/dmft_tools_config_user.sh
-          #source ~/opt/dmft_ed/gnu/*/etc/dmft_ed_config.sh
-          #source ~/opt/slave_spins/gnu/*/etc/slave_spins_config.sh
-          echo "3"
-          echo "$( ls )"
+          source ~/.bashrc
           ./inst_Drivers.sh
 
 # HERE ADD THE TESTING OF DRIVERS?
@@ -157,43 +147,26 @@ jobs:
         run: ./inst_Slave_Spins.sh
 
 
+#Testing
+      - name: Building tests
+        run:   |
+          source ~/.bashrc
+#          export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor)
+#          export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor | sed  "s/;/ /g"  | sed 's/\\/  /g' )
+          make all
+        
+      - name: Testing...
+        run: make test
+
+
 #Set up Drivers
       - name: Cloning Drivers
         run: git clone https://github.com/QcmPlab/Driver-Database.git Driver-Database
       - name: Install Drivers
         run:   |
           source ~/.bashrc
-          echo "1"
-          export PKG_CONFIG_PATH=~/.pkgconfig.d
-          export SCIFORVER=$( ls ~/opt/scifor/gnu )
-          export DMFTVER=$(   ls ~/opt/dmft_tools/gnu )
-          export LIBEDVER=$(  ls ~/opt/dmft_ed/gnu )
-          export SSPINVER=$(  ls ~/opt/slave_spins/gnu )
-          echo "2"
-          source ~/opt/scifor/gnu/$(SCIFORVER)/bin/scifor_config_user.sh
-          source ~/opt/dmft_tools/gnu/$(DMFTVER)/bin/dmft_tools_config_user.sh
-          source ~/opt/dmft_ed/gnu/$(LIBEDVER)/etc/dmft_ed_config.sh
-          source ~/opt/dmft_ed/gnu/$(SSPINVER)/etc/slave_spins_config.sh
-          echo "3"
-          export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor slave_spins)
-          export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor slave_spins | sed  "s/;/ /g"  | sed 's/\\/  /g' )
+#          export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor slave_spins)
+#          export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor slave_spins | sed  "s/;/ /g"  | sed 's/\\/  /g' )
           ./inst_Drivers.sh
 
-#Testing
-      - name: Building tests
-        run:   |
-          source ~/.bashrc
-          export PKG_CONFIG_PATH=~/.pkgconfig.d
-          export SCIFORVER=$( ls ~/opt/scifor/gnu )
-          export DMFTVER=$(   ls ~/opt/dmft_tools/gnu )
-          export LIBEDVER=$(  ls ~/opt/dmft_ed )
-          source ~/opt/scifor/gnu/$(SCIFORVER)/bin/scifor_config_user.sh
-          source ~/opt/dmft_tools/gnu/$(DMFTVER)/bin/dmft_tools_config_user.sh
-          source ~/opt/dmft_ed/gnu/$(LIBEDVER)/etc/dmft_ed_config.sh
-          export GLOB_INC=$( pkg-config --cflags dmft_ed dmft_tools scifor)
-          export GLOB_LIB=$( pkg-config --libs   dmft_ed dmft_tools scifor | sed  "s/;/ /g"  | sed 's/\\/  /g' )
-          make all
-        
-      - name: Testing...
-        run: make test
 

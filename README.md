@@ -18,4 +18,4 @@ Manual test: ![example workflow](https://github.com/SamueleGiuli/CIproject_QcmP/
 
 ### To be done
 
-Driver installation and check results at convergence. Separate workflows for single repos.
+Driver installation and check results at convergence. Separate workflows for single repos. Create a setup action for generic QcmP workflows.

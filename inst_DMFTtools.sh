@@ -4,7 +4,7 @@
 set -e
 
 
-export PKG_CONFIG_PATH=~/.pkgconfig.d
+#export PKG_CONFIG_PATH=~/.pkgconfig.d
 #Sourcing .bashrc
 source ~/.bashrc
 #SCIFORVER=$( ls ~/opt/scifor/gnu)
