@@ -30,7 +30,9 @@ jobs:
 
 # Build SciFortran
       - name: Cloning SciFortran
-        run: git clone https://github.com/QcmPlab/SciFortran.git scifor
+        run: |
+          gfortran --version
+          git clone https://github.com/QcmPlab/SciFortran.git scifor
       - name: Install SciFortran
         run: ./inst_scifor.sh
 
