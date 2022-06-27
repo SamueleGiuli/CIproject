@@ -33,7 +33,7 @@ runs:
 #MacOS
 # openmpi_4_macos
     - run: |
-        brew install gcc
+        brew reinstall gcc
         brew install openmpi
       if: ${{ runner.os == 'macOS' }}
       shell: bash

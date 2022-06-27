@@ -26,13 +26,13 @@ jobs:
         with:
           pack-type: open
 
+      - name: gfortran version
+        run: gfortran --version
 #********* BUILD PART **********
 
 # Build SciFortran
       - name: Cloning SciFortran
-        run: |
-          gfortran --version
-          git clone https://github.com/QcmPlab/SciFortran.git scifor
+        run: git clone https://github.com/QcmPlab/SciFortran.git scifor
       - name: Install SciFortran
         run: ./inst_scifor.sh
 
